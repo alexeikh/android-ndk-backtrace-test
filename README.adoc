@@ -1,0 +1,25 @@
+= Backtrace Testing App
+
+Native command-line app for Android. Android NDK is required for buiding.
+
+Tests backtracing of native C code from a signal handler.
+
+The following methods of backtracing are implmented:
+
+* Using Android NDK's built-in libunwind with registers from `ucontext_t`
+  (ARM32 only).
+* Using `_Unwind_Backtrace()` function with registers from `ucontext_t`
+  (ARM32 only).
+* Using `_Unwind_Backtrace()` function with frame skipping
+  (all architectures).
+
+Implementation is in pure C, but some already-compiled C{plus}{plus} libraries
+from Android NDK are used, such as libunwind and libc{plus}{plus}abi.
+
+Build as:
+
+ make build
+
+Run as:
+
+ make run
